@@ -11,4 +11,4 @@ Protótipo de média fidelidade criado no Figma.
 
 ## Objetivo
 
-Criar uma interface intuitiva e moderna para uma plataforma de streaming de música.
+Criar uma interface intuitiva e modernas.
