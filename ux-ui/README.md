@@ -11,4 +11,4 @@ Protótipo de média fidelidade criado no Figma.
 
 ## Objetivo
 
-Criar uma interface intuitiva e modernas.
+Criar uma interface intuitivas e modernas.
