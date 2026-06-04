@@ -6,14 +6,14 @@ export default function App() {
     <NeHeader header={
       <div className='flex justify-between items-center'>
         <div>
-          <h1 className='text-yellow-900 text-4xl'>Booter</h1>
+          <h1 className='text-primary-900 text-4xl'>Booter</h1>
         </div>
         <div>
           <nav>
-            <ul className='flex gap-4'>
-              <li className='cursor-pointer'>Home</li>
-              <li className='cursor-pointer'>About</li>
-              <li className='cursor-pointer'>Contact</li>
+            <ul className='flex gap-4 text-primary-800'>
+              <li className='cursor-pointer hover:underline'>Home</li>
+              <li className='cursor-pointer hover:underline'>About</li>
+              <li className='cursor-pointer hover:underline'>Contact</li>
             </ul>
           </nav>
         </div>
