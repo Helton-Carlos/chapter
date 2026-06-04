@@ -1,13 +1,32 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { Button } from '@/components/NeButton';
+import { Mail, ArrowRight, Trash2 } from 'lucide-react';
 
-function App() {
-  const [count, _setCount] = useState(0)
+export default function App() {
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <>
-      <p>{count}</p>
-    </>
-  )
-}
+    <div className="p-8 max-w-xs mx-auto flex flex-col gap-4">
+      <Button>
+        Enviar
+      </Button>
 
-export default App
+      <Button iconLeft={<Mail size={16} />}>
+        Entrar com E-mail
+      </Button>
+
+      <Button variant="secondary" iconRight={<ArrowRight size={16} />}>
+        Avançar
+      </Button>
+
+      <Button
+        variant="danger"
+        iconLeft={<Trash2 size={16} />}
+        disabled={isLoading}
+        onClick={() => setIsLoading(true)}
+      >
+        Excluir Conta
+      </Button>
+    </div>
+  );
+}
