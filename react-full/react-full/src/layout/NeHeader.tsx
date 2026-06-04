@@ -8,11 +8,11 @@ interface NeHeaderProps {
 export function NeHeader({ header, children }: NeHeaderProps) {
   return (
     <div>
-      <header>
+      <header className='w-full bg-amber-500 text-white px-8 py-4'>
         {header}
       </header>
 
-      <section>
+      <section className='px-8 py-4'>
         {children}
       </section>
     </div>

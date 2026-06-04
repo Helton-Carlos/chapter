@@ -1,32 +1,27 @@
-import { useState } from 'react';
 import { Button } from '@/components/NeButton';
-import { Mail, ArrowRight, Trash2 } from 'lucide-react';
+import { NeHeader } from '@/layout/NeHeader';
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(false);
-
   return (
-    <div className="p-8 max-w-xs mx-auto flex flex-col gap-4">
+    <NeHeader header={
+      <div className='flex justify-between items-center'>
+        <div>
+          <h1 className='text-yellow-900 text-4xl'>Booter</h1>
+        </div>
+        <div>
+          <nav>
+            <ul className='flex gap-4'>
+              <li className='cursor-pointer'>Home</li>
+              <li className='cursor-pointer'>About</li>
+              <li className='cursor-pointer'>Contact</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    }>
       <Button>
-        Enviar
+        Test new home
       </Button>
-
-      <Button iconLeft={<Mail size={16} />}>
-        Entrar com E-mail
-      </Button>
-
-      <Button variant="secondary" iconRight={<ArrowRight size={16} />}>
-        Avançar
-      </Button>
-
-      <Button
-        variant="danger"
-        iconLeft={<Trash2 size={16} />}
-        disabled={isLoading}
-        onClick={() => setIsLoading(true)}
-      >
-        Excluir Conta
-      </Button>
-    </div>
+    </NeHeader>
   );
 }
