@@ -28,6 +28,10 @@
 }
 
 @layer base {
+  body {
+    @apply bg-primary-50 text-primary-950 font-sans;
+  }
+
   h1 {
     @apply text-4xl font-bold font-heading leading-tight tracking-tight;
   }
