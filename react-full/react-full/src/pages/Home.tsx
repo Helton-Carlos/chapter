@@ -1,4 +1,5 @@
 import { sectionHome } from '@/utils/sectionHome';
+import { NeButton } from '@/components/NeButton';
 
 export function Home() {
   return (
@@ -12,6 +13,9 @@ export function Home() {
           <div key={index} className='p-4 border-b'>
             <h3 className='text-xl font-bold mb-2'>{section.title}</h3>
             <p>{section.description}</p>
+
+            <NeButton>
+              {section.title}</NeButton>
           </div>
         ))
       }

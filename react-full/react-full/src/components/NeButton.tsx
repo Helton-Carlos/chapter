@@ -6,7 +6,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconRight?: ReactNode;
 }
 
-export function Button({
+export function NeButton({
   children,
   variant = 'primary',
   iconLeft,
