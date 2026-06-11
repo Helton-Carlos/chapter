@@ -14,4 +14,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  test: {
+    globals: true,
+    coverage: {
+      provider: "v8",
+      exclude: ["**/*.{js,ts,tsx}"],
+    },
+    setupFiles: ["./src/__tests__/setupTests.ts"],
+    environment: "happy-dom",
+  },
 });
