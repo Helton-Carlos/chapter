@@ -56,6 +56,10 @@
     @apply text-base font-medium leading-normal;
   }
 
+  button {
+    @apply cursor-pointer;
+  }
+
   .container {
     @apply max-w-7xl mx-auto px-4;
   }
