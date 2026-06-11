@@ -10,7 +10,7 @@ export function Home() {
         </main>
         
         <section className='py-8'>
-          <h2 className='text-2xl font-bold mb-4'>Tipos de abelhas</h2>
+          <h2 className='text-2xl font-bold mb-4' data-testid="title-types-bees">Tipos de abelhas</h2>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
             {sectionHome.map((section, index) => (
@@ -22,7 +22,7 @@ export function Home() {
       
       <section className='bg-primary-500 w-full p-8'>
        <div className='container text-center text-white'>
-        <h2 className='text-2xl font-bold mb-4'>Tipos de abelhas</h2>
+        <h2 className='text-2xl font-bold mb-4' data-testid="title-curiosities">Curiosidades</h2>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
           {sectionHome.map((section, index) => (
@@ -33,7 +33,7 @@ export function Home() {
       </section> 
 
       <section className='py-8 container'>
-        <h2 className='text-2xl font-bold mb-4'>Tipos de abelhas</h2>
+        <h2 className='text-2xl font-bold mb-4' data-testid="title-endangered">Especies em extição</h2>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
           {sectionHome.map((section, index) => (
