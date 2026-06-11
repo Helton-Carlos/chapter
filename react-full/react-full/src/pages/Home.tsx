@@ -8,17 +8,23 @@ export function Home() {
         <h2>Seja-bem vindo ao BeeSting</h2>
       </main>
       
-      {
-        sectionHome.map((section, index) => (
-          <div key={index} className='p-4 border-b'>
-            <h3 className='text-xl font-bold mb-2'>{section.title}</h3>
-            <p>{section.description}</p>
+      <section className='py-8'>
+        <h2 className='text-2xl font-bold mb-4'>Tipos de abelhas</h2>
 
-            <NeButton>
-              {section.title}</NeButton>
-          </div>
-        ))
-      }
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+          {sectionHome.map((section, index) => (
+            <div key={index} className='bg-white rounded-lg shadow-md overflow-hidden'>
+              <img src={section.image} alt={section.title} className='w-full object-cover' />
+
+              <div className='p-4'>
+                <h3 className='text-xl font-semibold mb-2'>{section.title}</h3>
+                <p className='text-gray-700 mb-4'>{section.description}</p>
+                <NeButton>Saiba mais</NeButton>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>  
     </>
   )
 }
