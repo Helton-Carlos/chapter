@@ -1,5 +1,5 @@
 import { sectionHome } from '@/utils/sectionHome';
-import { NeButton } from '@/components/NeButton';
+import { NeCard } from '@/components/NeCard';
 
 export function Home() {
   return (
@@ -14,15 +14,7 @@ export function Home() {
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
             {sectionHome.map((section, index) => (
-              <div key={index} className='bg-white rounded-lg shadow-md overflow-hidden'>
-                <img src={section.image} alt={section.title} className='w-full object-cover' />
-
-                <div className='p-4'>
-                  <h3 className='text-xl font-semibold mb-2'>{section.title}</h3>
-                  <p className='text-gray-700 mb-4'>{section.description}</p>
-                  <NeButton>Saiba mais</NeButton>
-                </div>
-              </div>
+               <NeCard key={index} index={index} image={section.image} title={section.title} description={section.description} />
             ))}
           </div>
         </section> 
@@ -34,15 +26,7 @@ export function Home() {
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
           {sectionHome.map((section, index) => (
-            <div key={index} className='bg-white rounded-lg shadow-md overflow-hidden'>
-              <img src={section.image} alt={section.title} className='w-full object-cover' />
-
-              <div className='p-4'>
-                <h3 className='text-xl font-semibold mb-2'>{section.title}</h3>
-                <p className='text-gray-700 mb-4'>{section.description}</p>
-                <NeButton>Saiba mais</NeButton>
-              </div>
-            </div>
+           <NeCard key={index} index={index} image={section.image} title={section.title} description={section.description} />
           ))}
         </div>
        </div>
@@ -53,15 +37,7 @@ export function Home() {
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
           {sectionHome.map((section, index) => (
-            <div key={index} className='bg-white rounded-lg shadow-md overflow-hidden'>
-              <img src={section.image} alt={section.title} className='w-full object-cover' />
-
-              <div className='p-4'>
-                <h3 className='text-xl font-semibold mb-2'>{section.title}</h3>
-                <p className='text-gray-700 mb-4'>{section.description}</p>
-                <NeButton>Saiba mais</NeButton>
-              </div>
-            </div>
+            <NeCard key={index} index={index} image={section.image} title={section.title} description={section.description} />
           ))}
         </div>
       </section> 

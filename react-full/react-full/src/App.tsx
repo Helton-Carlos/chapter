@@ -2,6 +2,7 @@ import { Routes, Route, Link } from 'react-router';
 import { Home } from '@/pages/Home';
 import { About } from '@/pages/About';
 import { Contact } from '@/pages/Contact';
+import { Species } from '@/pages/Species';
 import { NeHeader } from '@/layout/NeHeader';
 import { NeFooter } from '@/layout/NeFooter';
 
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/species/:id" element={<Species />} />
         </Routes>
       </div>
 
