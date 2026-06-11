@@ -11,7 +11,7 @@ export default function App() {
     <>
       <NeHeader header={
         <div className='flex justify-between items-center gap-4'>
-          <h1 className='text-amber-950'>BeeSting</h1>
+          <Link to="/" className='text-amber-950 text-3xl font-bold'>BeeSting</Link>
 
           <nav>
             <ul className='flex gap-4'>
