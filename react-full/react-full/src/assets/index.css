@@ -55,4 +55,8 @@
   h6 {
     @apply text-base font-medium leading-normal;
   }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4;
+  }
 }
