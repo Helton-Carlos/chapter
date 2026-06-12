@@ -5,9 +5,9 @@ import { NeCard } from '@/components/NeCard';
 describe('Render NeCard', () => {
   const  NeCardProps = {
     index: 1,
-    image: 'string',
-    title: 'string',
-    description: 'string',
+    image: 'bee-image',
+    title: 'Bee testing',
+    description: 'Bee testing',
   }
 
   it('Render the application component', () => {
