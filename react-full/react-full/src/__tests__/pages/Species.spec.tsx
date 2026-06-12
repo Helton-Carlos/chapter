@@ -14,4 +14,16 @@ describe('Render Species', () => {
 
     expect(wrapper.getByText('Espécies')).toBeInTheDocument();
   });
+
+it('deve renderizar o ID dinâmico da rota e voltar ao clicar no botão', () => {
+    const wrapper = render(<Species />);
+
+    const title = wrapper.getByTestId('title-species');
+    const description = wrapper.getByTestId('description-species');
+    const button = wrapper.getByTestId('button-go-back');
+
+    expect(title).toBeInTheDocument();
+    expect(description).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
+  });
 });

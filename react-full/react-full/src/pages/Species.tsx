@@ -27,14 +27,19 @@ export function Species() {
 
   return (
     <div className='container'>
-
       <div className='flex justify-between items-center mb-4'>
         <h2>Espécies</h2>
-        <NeButton onClick={() => navigate(-1)}>Voltar</NeButton>
+
+        <NeButton 
+          data-testid="button-go-back"
+          onClick={() => navigate(-1)}
+        >
+          Voltar
+        </NeButton>
       </div>
 
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <h3 data-testid="title-species">{title}</h3>
+      <p data-testid="description-species">{description}</p>
 
       <img src={image} alt={title} className='w-full h-auto mt-4 rounded-lg shadow-md' />
     </div>
