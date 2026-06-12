@@ -3,7 +3,10 @@ export function About() {
     <div className='container'>
       <h2>Sobre</h2>
 
-      <h4 className='text-lg font-bold py-4'>Bem-vindo à página Sobre!</h4>
+      <h4 
+        className='text-lg font-bold py-4'
+        data-testid="subtitle-bees"
+      >Bem-vindo à página Sobre!</h4>
 
       <p>O BeeSting é um projeto dedicado a fornecer informações sobre as abelhas, suas espécies, comportamentos e a importância que desempenham no ecossistema. Nosso objetivo é educar e conscientizar as pessoas sobre a importância da conservação das abelhas e como elas contribuem para a polinização de plantas, produção de alimentos e manutenção da biodiversidade.</p>
 
