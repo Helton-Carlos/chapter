@@ -1,4 +1,4 @@
-namespace CrudProdutos.Models;
+namespace SystemCompany.Models;
 
 public class User
 {

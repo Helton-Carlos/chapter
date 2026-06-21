@@ -1,6 +1,6 @@
-using CrudProdutos.Models;
+using SystemCompany.Models;
 
-namespace CrudProdutos.Data;
+namespace SystemCompany.Data;
 
 public static class FakeDatabase
 {

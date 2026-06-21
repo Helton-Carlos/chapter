@@ -1,7 +1,7 @@
-using CrudProdutos.Models;
-using CrudProdutos.Data;
+using SystemCompany.Models;
+using SystemCompany.Data;
 
-namespace CrudProdutos.Routes;
+namespace SystemCompany.Routes;
 
 public static class ProdutoRoutes
 {
