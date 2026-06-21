@@ -13,4 +13,15 @@ public static class FakeDatabase
             Preco = 5000
         }
     };
+
+    public static List<User> Users = new()
+    {
+        new User
+        {
+            Id = 1,
+            Nome = "Admin",
+            Email = "admin@email.com",
+            Senha = "123456"
+        }
+    };
 }
