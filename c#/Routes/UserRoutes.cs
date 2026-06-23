@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SystemCompany.Models;
 using SystemCompany.Data;
 
@@ -7,14 +8,15 @@ public static class UserRoutes
 {
     public static void MapUserRoutes(this WebApplication app)
     {
-        app.MapGet("/users", () =>
+        app.MapGet("/users", async (AppDbContext db) =>
         {
-            return Results.Ok(FakeDatabase.Users);
+            var users = await db.Users.ToListAsync();
+            return Results.Ok(users);
         });
 
-        app.MapGet("/users/{id}", (int id) =>
+        app.MapGet("/users/{id}", async (int id, AppDbContext db) =>
         {
-            var user = FakeDatabase.Users.FirstOrDefault(u => u.Id == id);
+            var user = await db.Users.FindAsync(id);
 
             if (user is null)
                 return Results.NotFound(new { mensagem = "Usuário não encontrado" });
@@ -22,20 +24,17 @@ public static class UserRoutes
             return Results.Ok(user);
         });
 
-        app.MapPost("/users", (User novoUser) =>
+        app.MapPost("/users", async (User novoUser, AppDbContext db) =>
         {
-            novoUser.Id = FakeDatabase.Users.Any()
-                ? FakeDatabase.Users.Max(u => u.Id) + 1
-                : 1;
-
-            FakeDatabase.Users.Add(novoUser);
+            db.Users.Add(novoUser);
+            await db.SaveChangesAsync();
 
             return Results.Created($"/users/{novoUser.Id}", novoUser);
         });
 
-        app.MapPut("/users/{id}", (int id, User userAtualizado) =>
+        app.MapPut("/users/{id}", async (int id, User userAtualizado, AppDbContext db) =>
         {
-            var user = FakeDatabase.Users.FirstOrDefault(u => u.Id == id);
+            var user = await db.Users.FindAsync(id);
 
             if (user is null)
                 return Results.NotFound(new { mensagem = "Usuário não encontrado" });
@@ -44,17 +43,20 @@ public static class UserRoutes
             user.Email = userAtualizado.Email;
             user.Senha = userAtualizado.Senha;
 
+            await db.SaveChangesAsync();
+
             return Results.Ok(user);
         });
 
-        app.MapDelete("/users/{id}", (int id) =>
+        app.MapDelete("/users/{id}", async (int id, AppDbContext db) =>
         {
-            var user = FakeDatabase.Users.FirstOrDefault(u => u.Id == id);
+            var user = await db.Users.FindAsync(id);
 
             if (user is null)
                 return Results.NotFound(new { mensagem = "Usuário não encontrado" });
 
-            FakeDatabase.Users.Remove(user);
+            db.Users.Remove(user);
+            await db.SaveChangesAsync();
 
             return Results.NoContent();
         });

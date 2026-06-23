@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SystemCompany.Models;
 using SystemCompany.Data;
 
@@ -7,14 +8,15 @@ public static class ProdutoRoutes
 {
     public static void MapProdutoRoutes(this WebApplication app)
     {
-        app.MapGet("/produtos", () =>
+        app.MapGet("/produtos", async (AppDbContext db) =>
         {
-            return Results.Ok(FakeDatabase.Produtos);
+            var produtos = await db.Produtos.ToListAsync();
+            return Results.Ok(produtos);
         });
 
-        app.MapGet("/produtos/{id}", (int id) =>
+        app.MapGet("/produtos/{id}", async (int id, AppDbContext db) =>
         {
-            var produto = FakeDatabase.Produtos.FirstOrDefault(p => p.Id == id);
+            var produto = await db.Produtos.FindAsync(id);
 
             if (produto is null)
                 return Results.NotFound(new { mensagem = "Produto não encontrado" });
@@ -22,20 +24,17 @@ public static class ProdutoRoutes
             return Results.Ok(produto);
         });
 
-        app.MapPost("/produtos", (Produto novoProduto) =>
+        app.MapPost("/produtos", async (Produto novoProduto, AppDbContext db) =>
         {
-            novoProduto.Id = FakeDatabase.Produtos.Any()
-                ? FakeDatabase.Produtos.Max(p => p.Id) + 1
-                : 1;
-
-            FakeDatabase.Produtos.Add(novoProduto);
+            db.Produtos.Add(novoProduto);
+            await db.SaveChangesAsync();
 
             return Results.Created($"/produtos/{novoProduto.Id}", novoProduto);
         });
 
-        app.MapPut("/produtos/{id}", (int id, Produto produtoAtualizado) =>
+        app.MapPut("/produtos/{id}", async (int id, Produto produtoAtualizado, AppDbContext db) =>
         {
-            var produto = FakeDatabase.Produtos.FirstOrDefault(p => p.Id == id);
+            var produto = await db.Produtos.FindAsync(id);
 
             if (produto is null)
                 return Results.NotFound(new { mensagem = "Produto não encontrado" });
@@ -43,17 +42,20 @@ public static class ProdutoRoutes
             produto.Nome = produtoAtualizado.Nome;
             produto.Preco = produtoAtualizado.Preco;
 
+            await db.SaveChangesAsync();
+
             return Results.Ok(produto);
         });
 
-        app.MapDelete("/produtos/{id}", (int id) =>
+        app.MapDelete("/produtos/{id}", async (int id, AppDbContext db) =>
         {
-            var produto = FakeDatabase.Produtos.FirstOrDefault(p => p.Id == id);
+            var produto = await db.Produtos.FindAsync(id);
 
             if (produto is null)
                 return Results.NotFound(new { mensagem = "Produto não encontrado" });
 
-            FakeDatabase.Produtos.Remove(produto);
+            db.Produtos.Remove(produto);
+            await db.SaveChangesAsync();
 
             return Results.NoContent();
         });
