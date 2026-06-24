@@ -10,55 +10,110 @@ public static class UserRoutes
     {
         app.MapGet("/users", async (AppDbContext db) =>
         {
-            var users = await db.Users.ToListAsync();
-            return Results.Ok(users);
+            try
+            {
+                var users = await db.Users.ToListAsync();
+                return Results.Ok(users);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: 500,
+                    title: "Erro ao buscar usuários"
+                );
+            }
         });
 
         app.MapGet("/users/{id}", async (int id, AppDbContext db) =>
         {
-            var user = await db.Users.FindAsync(id);
+            try
+            {
+                var user = await db.Users.FindAsync(id);
 
-            if (user is null)
-                return Results.NotFound(new { mensagem = "Usuário não encontrado" });
+                if (user is null)
+                    return Results.NotFound(new { mensagem = "Usuário não encontrado", status = 404 });
 
-            return Results.Ok(user);
+                return Results.Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: 500,
+                    title: "Erro ao buscar usuário"
+                );
+            }
         });
 
         app.MapPost("/users", async (User novoUser, AppDbContext db) =>
         {
-            db.Users.Add(novoUser);
-            await db.SaveChangesAsync();
+            try
+            {
+                db.Users.Add(novoUser);
+                await db.SaveChangesAsync();
 
-            return Results.Created($"/users/{novoUser.Id}", novoUser);
+                return Results.Created($"/users/{novoUser.Id}", novoUser);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: 500,
+                    title: "Erro ao criar usuário"
+                );
+            }
         });
 
         app.MapPut("/users/{id}", async (int id, User userAtualizado, AppDbContext db) =>
         {
-            var user = await db.Users.FindAsync(id);
+            try
+            {
+                var user = await db.Users.FindAsync(id);
 
-            if (user is null)
-                return Results.NotFound(new { mensagem = "Usuário não encontrado" });
+                if (user is null)
+                    return Results.NotFound(new { mensagem = "Usuário não encontrado", status = 404 });
 
-            user.Nome = userAtualizado.Nome;
-            user.Email = userAtualizado.Email;
-            user.Senha = userAtualizado.Senha;
+                user.Nome = userAtualizado.Nome;
+                user.Email = userAtualizado.Email;
+                user.Senha = userAtualizado.Senha;
 
-            await db.SaveChangesAsync();
+                await db.SaveChangesAsync();
 
-            return Results.Ok(user);
+                return Results.Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: 500,
+                    title: "Erro ao atualizar usuário"
+                );
+            }
         });
 
         app.MapDelete("/users/{id}", async (int id, AppDbContext db) =>
         {
-            var user = await db.Users.FindAsync(id);
+            try
+            {
+                var user = await db.Users.FindAsync(id);
 
-            if (user is null)
-                return Results.NotFound(new { mensagem = "Usuário não encontrado" });
+                if (user is null)
+                    return Results.NotFound(new { mensagem = "Usuário não encontrado", status = 404 });
 
-            db.Users.Remove(user);
-            await db.SaveChangesAsync();
+                db.Users.Remove(user);
+                await db.SaveChangesAsync();
 
-            return Results.NoContent();
+                return Results.NoContent();
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: 500,
+                    title: "Erro ao deletar usuário"
+                );
+            }
         });
     }
 }

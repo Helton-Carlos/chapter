@@ -10,54 +10,109 @@ public static class ProdutoRoutes
     {
         app.MapGet("/produtos", async (AppDbContext db) =>
         {
-            var produtos = await db.Produtos.ToListAsync();
-            return Results.Ok(produtos);
+            try
+            {
+                var produtos = await db.Produtos.ToListAsync();
+                return Results.Ok(produtos);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: 500,
+                    title: "Erro ao buscar produtos"
+                );
+            }
         });
 
         app.MapGet("/produtos/{id}", async (int id, AppDbContext db) =>
         {
-            var produto = await db.Produtos.FindAsync(id);
+            try
+            {
+                var produto = await db.Produtos.FindAsync(id);
 
-            if (produto is null)
-                return Results.NotFound(new { mensagem = "Produto não encontrado" });
+                if (produto is null)
+                    return Results.NotFound(new { mensagem = "Produto não encontrado", status = 404 });
 
-            return Results.Ok(produto);
+                return Results.Ok(produto);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: 500,
+                    title: "Erro ao buscar produto"
+                );
+            }
         });
 
         app.MapPost("/produtos", async (Produto novoProduto, AppDbContext db) =>
         {
-            db.Produtos.Add(novoProduto);
-            await db.SaveChangesAsync();
+            try
+            {
+                db.Produtos.Add(novoProduto);
+                await db.SaveChangesAsync();
 
-            return Results.Created($"/produtos/{novoProduto.Id}", novoProduto);
+                return Results.Created($"/produtos/{novoProduto.Id}", novoProduto);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: 500,
+                    title: "Erro ao criar produto"
+                );
+            }
         });
 
         app.MapPut("/produtos/{id}", async (int id, Produto produtoAtualizado, AppDbContext db) =>
         {
-            var produto = await db.Produtos.FindAsync(id);
+            try
+            {
+                var produto = await db.Produtos.FindAsync(id);
 
-            if (produto is null)
-                return Results.NotFound(new { mensagem = "Produto não encontrado" });
+                if (produto is null)
+                    return Results.NotFound(new { mensagem = "Produto não encontrado", status = 404 });
 
-            produto.Nome = produtoAtualizado.Nome;
-            produto.Preco = produtoAtualizado.Preco;
+                produto.Nome = produtoAtualizado.Nome;
+                produto.Preco = produtoAtualizado.Preco;
 
-            await db.SaveChangesAsync();
+                await db.SaveChangesAsync();
 
-            return Results.Ok(produto);
+                return Results.Ok(produto);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: 500,
+                    title: "Erro ao atualizar produto"
+                );
+            }
         });
 
         app.MapDelete("/produtos/{id}", async (int id, AppDbContext db) =>
         {
-            var produto = await db.Produtos.FindAsync(id);
+            try
+            {
+                var produto = await db.Produtos.FindAsync(id);
 
-            if (produto is null)
-                return Results.NotFound(new { mensagem = "Produto não encontrado" });
+                if (produto is null)
+                    return Results.NotFound(new { mensagem = "Produto não encontrado", status = 404 });
 
-            db.Produtos.Remove(produto);
-            await db.SaveChangesAsync();
+                db.Produtos.Remove(produto);
+                await db.SaveChangesAsync();
 
-            return Results.NoContent();
+                return Results.NoContent();
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: 500,
+                    title: "Erro ao deletar produto"
+                );
+            }
         });
     }
 }
