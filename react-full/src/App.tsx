@@ -11,7 +11,9 @@ export default function App() {
     <>
       <NeHeader header={
         <div className='flex justify-between items-center gap-4'>
-          <Link to="/" className='text-amber-950 text-3xl font-bold'>BeeSting</Link>
+          <Link to="/" className='text-amber-950 text-3xl font-bold'>
+           <img src="/logo.svg" alt="logo da empresa BeeSting" width={150} height={50} />
+          </Link>
 
           <nav>
             <ul className='flex gap-4'>
@@ -23,7 +25,7 @@ export default function App() {
         </div>
       } />
       
-      <div className='py-8'>
+      <div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
