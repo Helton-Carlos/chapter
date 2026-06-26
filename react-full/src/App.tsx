@@ -12,7 +12,7 @@ export default function App() {
       <NeHeader header={
         <div className='flex justify-between items-center gap-4'>
           <Link to="/" className='text-amber-950 text-3xl font-bold'>
-           <img src="/logo.svg" alt="logo da empresa BeeSting" width={150} height={50} />
+           <img src="/logo.svg" alt="logo da empresa BeeSting" width={150} height={50} data-testid='image-bee'/>
           </Link>
 
           <nav>

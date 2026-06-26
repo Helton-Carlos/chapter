@@ -7,7 +7,7 @@ describe('Render NeHeader', () => {
     render(<NeHeader
       header={
         <div className='flex justify-between items-center gap-4'>
-          <h1 className='text-amber-950 text-3xl font-bold'>BeeSting</h1>
+          <h1 className='text-amber-950 text-3xl font-bold'> Seja-bem vindo <br></br> ao BeeSting</h1>
 
           <nav>
             <ul className='flex gap-4'>

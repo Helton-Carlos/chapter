@@ -20,7 +20,7 @@ export function Home() {
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-white">
           <img src='/logo-icon.svg' alt='logo do BeeSting' width={120} height={30} />
-          <h1 className="text-3xl md:text-7xl text-center font-bold">Seja-bem vindo <br></br> ao BeeSting</h1>
+          <h1 className="text-3xl md:text-7xl text-center font-bold" data-testid="title-types-bees">Seja-bem vindo <br></br> ao BeeSting</h1>
         </div>
       </div>
       
