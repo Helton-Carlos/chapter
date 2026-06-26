@@ -4,7 +4,7 @@ import { NeCard } from '@/components/NeCard';
 export function Home() {
   return (
     <>
-      <div className="relative w-full h-dvh overflow-hidden">
+      <div className="relative w-full h-140 overflow-hidden">
         <video 
           autoPlay 
           muted 
@@ -19,8 +19,8 @@ export function Home() {
         <div className="absolute inset-0 bg-black/50 pointer-events-none" />
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-white">
-          <img src='/logo-icon.svg' alt='logo do BeeSting' width={150} height={38} />
-          <h1 className="text-3xl md:text-7xl text-center font-bold">Seja-bem vindo ao BeeSting</h1>
+          <img src='/logo-icon.svg' alt='logo do BeeSting' width={120} height={30} />
+          <h1 className="text-3xl md:text-7xl text-center font-bold">Seja-bem vindo <br></br> ao BeeSting</h1>
         </div>
       </div>
       
