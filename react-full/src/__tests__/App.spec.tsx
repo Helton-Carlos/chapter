@@ -21,6 +21,8 @@ describe('Render App', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText('BeeSting')).toBeInTheDocument();
+    const logo = screen.getByTestId('image-bee')
+
+    expect(logo).toBeInTheDocument();
   });
 });
