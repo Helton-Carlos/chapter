@@ -5,7 +5,7 @@ using Scalar.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
-builder.Services.AddSingleton<ITodoService, TodoService>();
+builder.Services.AddSingleton<ILoginService, LoginService>();
 
 var app = builder.Build();
 
@@ -16,6 +16,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.MapTodoEndpoints();
+app.MapLoginEndpoints();
 
 app.Run();
