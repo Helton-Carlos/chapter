@@ -9,11 +9,11 @@ public static class RegisterEndpoints
     {
         var registerGroup = app.MapGroup("/api/register");
 
-        registerGroup.MapPost("/", (RegisterRequest request, IRegisterService service) =>
+        registerGroup.MapPost("/", async (RegisterRequest request, IRegisterService service) =>
         {
-            var result = service.AddRegister(request);
+            var result = await service.AddRegisterAsync(request);
             return result.Success
-                ? Results.Created($"/api/register", result)
+                ? Results.Created("/api/register", result)
                 : Results.Conflict(result);
         });
     }

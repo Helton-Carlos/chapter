@@ -4,5 +4,5 @@ namespace MinimalOne.Services;
 
 public interface ILoginService
 {
-    LoginResponse Authenticate(LoginRequest request);
+    Task<LoginResponse> AuthenticateAsync(LoginRequest request);
 }

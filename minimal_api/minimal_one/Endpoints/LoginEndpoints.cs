@@ -7,11 +7,12 @@ public static class LoginEndpoints
 {
     public static void MapLoginEndpoints(this WebApplication app)
     {
-        RouteGroupBuilder? loginGroup = app.MapGroup("/api/login");
+        var loginGroup = app.MapGroup("/api/login");
 
-        loginGroup.MapPost("/", (LoginRequest request, ILoginService service) =>
+        loginGroup.MapPost("/", async (LoginRequest request, ILoginService service) =>
         {
-            LoginResponse? result = service.Authenticate(request);
+            var result = await service.AuthenticateAsync(request);
+
             return result.Success
                 ? Results.Ok(result)
                 : Results.Unauthorized();

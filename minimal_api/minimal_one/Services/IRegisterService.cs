@@ -4,5 +4,5 @@ namespace MinimalOne.Services;
 
 public interface IRegisterService
 {
-    RegisterResponse AddRegister(RegisterRequest request);
+    Task<RegisterResponse> AddRegisterAsync(RegisterRequest request);
 }

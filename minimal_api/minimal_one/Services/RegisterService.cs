@@ -6,8 +6,10 @@ public class RegisterService : IRegisterService
 {
     private readonly List<RegisterRequest> _users = [];
 
-    public RegisterResponse AddRegister(RegisterRequest request)
+    public async Task<RegisterResponse> AddRegisterAsync(RegisterRequest request)
     {
+        await Task.CompletedTask;
+
         var exists = _users.Any(u => u.Email == request.Email);
 
         if (exists)
