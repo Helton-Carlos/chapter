@@ -17,7 +17,7 @@ export function NeCard({index,image, title, description}: NeCardProps) {
   
   return(
     <div className='bg-white rounded-lg shadow-md overflow-hidden'>
-      <img src={image} alt={title} className='w-full object-cover' />
+      <img src={image} alt={title} className='w-full h-50 object-cover' />
 
       <div className='p-4 text-primary-800'>
         <h3 className='text-xl font-semibold mb-2'>{title}</h3>

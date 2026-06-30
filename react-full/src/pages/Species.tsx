@@ -26,9 +26,9 @@ export function Species() {
   const { title, description, image } = getSpecies();
 
   return (
-    <div className='container'>
+    <div className='container my-8'>
       <div className='flex justify-between items-center mb-4'>
-        <h2>Espécies</h2>
+        <h2 className='underline'>Espécies</h2>
 
         <NeButton 
           data-testid="button-go-back"
@@ -38,10 +38,14 @@ export function Species() {
         </NeButton>
       </div>
 
-      <h3 data-testid="title-species">{title}</h3>
-      <p data-testid="description-species">{description}</p>
+      <div className='flex gap-4'>
+        <div>
+          <h3 className='my-8' data-testid="title-species">{title}</h3>
+          <p  className='w-[80%]' data-testid="description-species">{description}</p>
+        </div>
 
-      <img src={image} alt={title} className='w-full h-auto mt-4 rounded-lg shadow-md' />
+        <img src={image} alt={title} className='w-full h-150 mt-4 rounded-lg shadow-md' />
+      </div>
     </div>
   )
 }
