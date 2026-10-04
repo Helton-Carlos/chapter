@@ -8,12 +8,11 @@ O objetivo é evoluir um sistema bancário simples (depósito, saque e extrato) 
 
 ### Repositório de referência
 
-Código-fonte original fornecido pela trilha, usado como ponto de partida:
+Repositório completo da trilha, com todo o código-fonte versionado pela DIO ao longo do módulo:
+[digitalinnovationone/trilha-python-dio](https://github.com/digitalinnovationone/trilha-python-dio)
+
+Arquivo específico usado como ponto de partida deste desafio:
 [trilha-python-dio/01 - Estrutura de dados/desafio.py](https://github.com/digitalinnovationone/trilha-python-dio/blob/main/01%20-%20Estrutura%20de%20dados/desafio.py)
-
-### Imagem de referência
-
-Imagem de apoio ao desafio: *(adicionar aqui o link do Figma/imagem fornecido pelo expert, caso aplicável)*
 
 ## Melhorias implementadas
 
@@ -37,15 +36,15 @@ python sistema_bancario.py
 
 ## Funcionalidades do menu
 
-| Opção | Ação             |
-|-------|-------------------|
-| `d`   | Depositar         |
-| `s`   | Sacar             |
-| `e`   | Exibir extrato    |
-| `nu`  | Novo usuário      |
-| `nc`  | Nova conta        |
-| `lc`  | Listar contas     |
-| `q`   | Sair              |
+| Opção | Ação           |
+| ----- | -------------- |
+| `d`   | Depositar      |
+| `s`   | Sacar          |
+| `e`   | Exibir extrato |
+| `nu`  | Novo usuário   |
+| `nc`  | Nova conta     |
+| `lc`  | Listar contas  |
+| `q`   | Sair           |
 
 ## Regras de negócio
 
