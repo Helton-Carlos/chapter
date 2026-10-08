@@ -9,3 +9,4 @@ Os projetos aqui não têm finalidade de produção — são experimentos e exer
 - **c#** — API em .NET 8 (Minimal API)
 - **react-full** — Aplicação React com TypeScript
 - **ux-ui** — Aplicação UX/UI
+- **python** — Projetos rápidos
